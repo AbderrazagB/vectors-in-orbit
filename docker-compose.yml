@@ -186,9 +186,9 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
       args:
-        VITE_MONGO_BACKEND_URL: http://localhost:8000
-        VITE_API_GATEWAY_URL: http://localhost:8008
-        VITE_SEARCH_API_URL: http://localhost:8002
+        VITE_MONGO_BACKEND_URL: http://${PUBLIC_HOST:-localhost}:8000
+        VITE_API_GATEWAY_URL: http://${PUBLIC_HOST:-localhost}:8008
+        VITE_SEARCH_API_URL: http://${PUBLIC_HOST:-localhost}:8002
     container_name: nexus_frontend
     ports:
       - "80:80"
@@ -205,10 +205,6 @@ services:
       - mongo_backend
     networks:
       - nexus_network
-    environment:
-      - VITE_MONGO_BACKEND_URL=http://localhost:8000
-      - VITE_API_GATEWAY_URL=http://localhost:8008
-      - VITE_SEARCH_API_URL=http://localhost:8002
 
 networks:
   nexus_network:

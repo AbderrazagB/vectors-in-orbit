@@ -1,0 +1,25 @@
+# Data volumes — owned by containers, not needed for builds
+mongo_data/
+qdrant_data/
+qdrant_data_export/
+data/
+
+# Git
+.git/
+.gitignore
+
+# Environment
+.env
+.venv/
+__pycache__/
+
+# Docs / non-build files
+Architecture&workflows/
+README.md
+*.md
+
+# Zip dump (only needed by init_qdrant, not by service builds)
+qdrant_storage_dump.zip
+
+# Frontend (has its own context)
+frontend/
