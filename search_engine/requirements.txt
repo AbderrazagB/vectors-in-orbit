@@ -1,0 +1,11 @@
+fastapi>=0.123.10
+uvicorn>=0.40.0
+pydantic>=2.12.5
+pydantic-settings>=2.0.0
+requests>=2.31.0
+python-dotenv>=1.2.1
+qdrant-client>=1.16.2
+rank-bm25>=0.2.2
+spacy>=3.8.1
+aiokafka>=0.13.0
+numpy>=1.26.0

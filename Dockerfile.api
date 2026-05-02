@@ -1,0 +1,29 @@
+# Dockerfile.api
+FROM python:3.13-slim
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# 1. Install Global Dependencies for the API
+# We install modules needed by the sub-apps because server.py imports them
+RUN pip install --no-cache-dir \
+    fastapi uvicorn aiokafka qdrant-client python-dotenv pydantic requests 
+
+# 2. Copy Shared Files
+COPY id_helpers.py .
+COPY kafka_broker.py .
+COPY server.py .
+
+# 3. Copy Subdirectories 
+# (server.py imports events from these folders, so they must exist)
+COPY user_profiler/ ./user_profiler/
+COPY product_vectorizer/ ./product_vectorizer/
+
+# 4. Set Path
+ENV PYTHONPATH=/app
+
+# 5. Run
+CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "8000"]

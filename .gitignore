@@ -1,0 +1,19 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+user_profiling/.env
+.env
+
+# Ignored Data Folders
+data/
+qdrant_data/
+qdrant_data_export/
+
+
