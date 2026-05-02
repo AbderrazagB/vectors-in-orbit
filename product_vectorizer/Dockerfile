@@ -8,7 +8,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 COPY id_helpers.py .
 COPY kafka_broker.py .
-COPY .env .
 
 COPY product_vectorizer/requirements.txt ./product_vectorizer/
 RUN pip install --no-cache-dir -r product_vectorizer/requirements.txt

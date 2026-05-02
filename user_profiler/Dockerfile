@@ -15,7 +15,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # 4. Copy Shared Utilities
 COPY id_helpers.py .
 COPY kafka_broker.py .
-COPY .env .
 
 # 5. Install Dependencies
 COPY user_profiler/requirements.txt ./user_profiler/

@@ -91,11 +91,14 @@ services:
       - kafka
       - qdrant
       - embedding_service # <--- DEPENDENCY
+    env_file:
+      - .env
     environment:
       - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
       - QDRANT_HOST=qdrant
       - QDRANT_PORT=6333
       - EMBEDDING_SERVICE_URL=http://embedding_service:8000 # <--- URL
+      - MISTRAL_API_KEY=${MISTRAL_API_KEY_VECTORIZER}
     networks:
       - nexus_network
 
@@ -108,11 +111,14 @@ services:
       - kafka
       - qdrant
       - embedding_service # <--- ADDED DEPENDENCY
+    env_file:
+      - .env
     environment:
       - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
       - QDRANT_HOST=qdrant
       - QDRANT_PORT=6333
       - EMBEDDING_SERVICE_URL=http://embedding_service:8000 # <--- ADDED URL
+      - MISTRAL_API_KEY=${MISTRAL_API_KEY_PROFILER}
     networks:
       - nexus_network
 
